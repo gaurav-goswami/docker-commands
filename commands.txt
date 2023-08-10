@@ -1,0 +1,33 @@
+|-----------------------------------------Docker Commands 🐋-----------------------------------------|
+
+👉🏻 Check docker version
+docker -v or docker --version
+
+👉🏻 Get docker info
+docker info
+
+👉🏻 Search for an image using CLI
+docker search `image name` 
+example :- docker search node
+
+👉🏻 Pull image from docker registry
+docker image pull `image name`:[TAG] ➡️ (or use the shorthand) docker pull `image name`:[TAG]
+example :- docker pull node:latest  // docker will download the node image from the docker registry
+
+👉🏻 Check images
+docker images
+
+👉🏻 List docker container
+docker ps (this command will only show the running containers)
+docker ps -a (this command will show both running and stopped containers)
+
+👉🏻 Create and run container from a pulled image
+docker run `image name`
+example :- docker run node (** If we run the image using this command without adding the interactive mode then the container will exit immediately)
+       |
+       |----> ** Run the image in interactive mode ➡️ docker run -it `image name`
+       |
+       |----> ** give name to your container ➡️ docker run -it --name `container name` `image names`
+
+👉🏻 Inspect a container
+docker inspect `container id` (check the container id by running this command ➡️ docker ps -a)
