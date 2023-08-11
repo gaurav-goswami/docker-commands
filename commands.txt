@@ -22,12 +22,39 @@ docker ps (this command will only show the running containers)
 docker ps -a (this command will show both running and stopped containers)
 
 👉🏻 Create and run container from a pulled image
-docker run `image name`
+docker run `image name`:[TAG]
+
 example :- docker run node (** If we run the image using this command without adding the interactive mode then the container will exit immediately)
        |
-       |----> ** Run the image in interactive mode ➡️ docker run -it `image name`
+       |----> ** Run the image in interactive mode ➡️ docker run -it `image name`:[TAG]
        |
-       |----> ** give name to your container ➡️ docker run -it --name `container name` `image names`
+       |----> ** Give name to your container ➡️ docker run -it --name `container name` `image name`:[TAG]
+       |
+       |----> ** Run container in background and print containerId (creates and exit the container immediately) ➡️ docker run -d `image name`:[TAG] [*Note-> When you run a container in detached mode using the -d flag, it means the container will run in the background and not hold your terminal session hostage. This is particularly useful for long-running processes such as servers, daemons, or applications that don't require direct interaction with the terminal.]
+       |
+       |----> ** Execute a command in a running container
+                     |
+                     |----> docker exec [OPTIONS] CONTAINER COMMAND  (this command will only work for a running container)
+                            |
+                            |-----> docker run --name `container name` -it -d (this will create a terminal session and will run the container in background) `image name`
+                            |
+                            |-----> docker run --name nodeContainer -it -d node
+                                          |
+                                          |----> example :- docker exec -it nodeContainer node
+                           
 
 👉🏻 Inspect a container
-docker inspect `container id` (check the container id by running this command ➡️ docker ps -a)
+docker inspect `container id` (check the container id by running this command ➡️ docker ps -a) OR docker inspect `container name`
+
+👉🏻 Stop a container
+docker stop `container name` OR docker stop `container ID`
+
+👉🏻 Start a container
+docker start `container name` OR docker start `container ID`
+ 
+👉🏻 Remove a container
+docker rm `container name` OR docker rm `container ID` [the container should not be running]
+
+👉🏻 Remove an image
+docker rmi `image name`
+example :- docker rmi node
