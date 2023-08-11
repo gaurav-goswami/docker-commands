@@ -55,6 +55,37 @@ docker start `container name` OR docker start `container ID`
 👉🏻 Remove a container
 docker rm `container name` OR docker rm `container ID` [the container should not be running]
 
+👉🏻 Remove all containers
+docker container prune
+
 👉🏻 Remove an image
 docker rmi `image name`
 example :- docker rmi node
+
+👉🏻 Adding an env variable (using -e)
+// example :- using an env variable in mysql image
+    |
+    |-----> docker pull mysql
+    |-----> docker run --name sqlContainer -d -e MYSQL_ROOT_PASSWORD=password mysql
+
+👉🏻 Expose host PORT
+docker run --name `container name` -p YOUR PORT:DOCKER PORT `image name`
+     |
+     |------> example :- docker pull nginx 
+                 |
+                 |-----> docker run --name nginxContainer -d -p 8080:80 nginx (now check your localhost:8080)
+
+👉🏻 Creating our own docker image (add your node_modules[if any] in a .dockerignore file)
+   |
+   |---> create a file -> Dockerfile 
+   |---> Add a base image ➡️ FROM baseImage 
+   |---> Set the working directory ➡️ WORKDIR /app/src
+   |---> Copy the files to the container ➡️ COPY . /app/src
+   |---> Add the RUN command ➡️ RUN `Your command here` example :- RUN npm install
+   |---> Run the files when container start ➡️ CMD[""] example :- CMD["node" , "index"]
+   |
+   |---> Build the image ➡️ docker build -t dockerhub username/imagename .
+
+👉🏻 Push your image to hub.docker.com (create an account on hub.docker.com)
+docker push dockerusername/image name
+example :- docker push johndoe/practiceimage
