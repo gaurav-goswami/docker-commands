@@ -6,4 +6,4 @@ COPY . /app/src/
 
 RUN command
 
-CMD ["node" , "index"]
+CMD ["node" , "index"] #example CMD

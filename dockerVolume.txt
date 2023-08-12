@@ -1,0 +1,26 @@
+|-----------------------------------------Docker Volume-----------------------------------------|
+
+⭐ Docker Volume is a feature provided by docker that allows us to manage persistent data in Docker containers. When a container is created, it generally runs in an isolated environment with its own file system. However, any data stored within the container is typically non-persistent, meaning it will be lost when the container is stopped or removed. 
+
+⭐ Docker volume provides a way to overcome this limitation by allowing us to create a separate storage area that can be shared between the containers or between the containers and the host system.
+
+👉🏻 Create Volume
+docker volume create vol-name
+
+👉🏻 List volumes
+docker volume ls
+
+👉🏻 Inspect Volume 
+docker volume inspect vol-name
+
+👉🏻 Remove volume 
+docker volume rm vol-name
+
+👉🏻 Remove all volumes at once
+docker volume prune
+
+👉🏻 Start a container and create a volume 
+docker run -d --name `container-name` -v vol-name:/path `image name` 
+
+👉🏻 Create a read only volume after starting a container
+docker run -d --name `container-name` -v vol-name:/path:ro `image name`
